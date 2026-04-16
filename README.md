@@ -31,4 +31,4 @@ These publications provide the methodology and high-precision RTK GNSS data used
 - Accurate estimation of train position and heading  
 
 ## Example Result
-[graphics.pdf](https://github.com/user-attachments/files/26777153/graphics.pdf)
+<img width="2089" height="1470" alt="graphics-1" src="https://github.com/user-attachments/assets/89e0af94-c24f-420b-af55-505c21bd35a9" />
