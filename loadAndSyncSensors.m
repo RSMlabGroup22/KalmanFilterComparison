@@ -4,6 +4,7 @@ isNewFormat = exist(fullfile(dataDir, 'Accelerometer.csv'), 'file');
 
 if isNewFormat
     % --- YENİ FORMAT OKUMA ---
+    disp("marmaray");
     acc_tbl = readtable(fullfile(dataDir, 'Accelerometer.csv'));
     gyr_tbl = readtable(fullfile(dataDir, 'Gyroscope.csv'));
     loc_tbl = readtable(fullfile(dataDir, 'Location.csv'));
@@ -15,9 +16,9 @@ if isNewFormat
     % İvme (x,y,z sütunlarını eşle)
     % Not: Yeni veriler linear acceleration (yerçekimsiz) ise
     % mevcut EKF kodunla uyum için Z eksenine 9.81 ekliyoruz.
-    ds.ax = acc_tbl.x;
-    ds.ay = acc_tbl.y;
-    ds.az = acc_tbl.z + 9.81; % Uyumluluk için yerçekimi eklendi
+    ds.ax = acc_tbl.x*9.81;
+    ds.ay = acc_tbl.y*9.81;
+    ds.az = acc_tbl.z*9.81; % g to m/s^2
 
     % Jiroskop
     ds.gx = gyr_tbl.x;
@@ -39,6 +40,7 @@ if isNewFormat
     T0 = 0; % seconds_elapsed zaten 0'dan başlar
 else
     % --- ESKİ FORMAT OKUMA (Mevcut mantığın korunmuş hali) ---
+    disp("modena")
     imu_file = fullfile(dataDir, 'clean_imu.csv');
     gnss_file = fullfile(dataDir, 'clean_gnss.csv');
 

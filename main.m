@@ -33,13 +33,17 @@ EKF_out = EKF(dataStruct);
 EKF_sage_out = EKF_sagehusa(dataStruct);
 
 %%
+
+imu_out = imuLoc(dataStruct);
+%%
 plotResultsKF(dataStruct, KF_out, 'Plot/');
 
 plotResultsSageHusa(dataStruct, SH_out, 'Plot/');
 
 plotResultsSTF(dataStruct, STF_out, 'Plot/');
 
-
+%%
+plotResultsimu(dataStruct, imu_out, 'Plot/');
 %%
 kf_table = table(KF_out.lat, KF_out.lon, 'VariableNames', {'Lat', 'Lon'});
 writetable(kf_table, 'kf_predictions.csv');
@@ -56,6 +60,9 @@ writetable(ekf_table, 'ekf_predictions.csv');
 ekfsh_table = table(EKF_sage_out.lat, EKF_sage_out.lon, 'VariableNames', {'Lat', 'Lon'});
 writetable(ekfsh_table, 'ekfsh_predictions.csv');
 
+%%
+imush_table = table(imu_out.lat, imu_out.lon, 'VariableNames', {'Lat', 'Lon'});
+writetable(imush_table, 'imush_predictions.csv');
 %%
 plotResultsEKF(dataStruct, EKF_out, 'Plot/');
 
